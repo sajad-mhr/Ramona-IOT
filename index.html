@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ramona IOT</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="./js/script.js" defer></script>
+  </head>
+  <body>
+    <!-- tabbar-mobile-START -->
+    <nav class="tab-bar-mobile">
+      <div class="mobile-bar-right">
+        <a href="./indexRamona.html">
+          <span>Ramona</span>
+        </a>
+      </div>
+      <div class="mobile-bar-left">
+        <button class="menu-mobile-btn">
+          <hr />
+          <hr />
+        </button>
+      </div>
+    </nav>
+
+    <div class="tab-bar-mobile-items">
+      <a
+        data-target="products-list-panel"
+        href="#"
+        class="tab-bar-mobile-item active"
+      >
+        لیست محصولات
+      </a>
+      <a data-target="card-list-panel" href="#" class="tab-bar-mobile-item">
+        کارت ها
+      </a>
+      <a data-target="contact-us-panel" href="#" class="tab-bar-mobile-item">
+        ارتباط با ما
+      </a>
+    </div>
+    <!-- tabbar-mobile-END -->
+
+    <!-- tabbar-START -->
+    <nav class="tab-bar">
+      <div class="tab-bar-logo">
+        <a href="./indexRamona.html">
+          <span>Ramona</span>
+        </a>
+      </div>
+      <div class="tab-bar-items">
+        <div class="dropdown">
+          <button class="dropbtn">
+            <span>لیست</span>
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">آیتم 1</a>
+            <div class="submenu">
+              <a href="#">
+                آیتم 2
+                <div class="submenu-content">
+                  <a href="#">آیتم 2.1</a>
+                  <a href="#">آیتم 2.2</a>
+                  <a href="#">آیتم 2.3</a>
+                </div>
+              </a>
+            </div>
+            <a href="#">آیتم 3</a>
+          </div>
+        </div>
+        <a
+          data-target="products-list-panel"
+          href="#"
+          class="tab-bar-item active"
+        >
+          لیست محصولات
+        </a>
+        <a data-target="card-list-panel" href="#" class="tab-bar-item">
+          کارت ها
+        </a>
+        <a data-target="contact-us-panel" href="#" class="tab-bar-item">
+          ارتباط با ما
+        </a>
+      </div>
+    </nav>
+    <!-- tabbar-END -->
+
+    <!-- panels-START -->
+    <div
+      id="panels"
+      style="
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <!-- products-list-panel-START -->
+      <section id="products-list-panel" class="tab-panel active">
+        <div class="panel-products-top">
+          <div class="search-container">
+            <button id="search-btn">
+              <i class="fa fa-search"></i>
+            </button>
+            <input id="search-input" type="text" placeholder="جست و جو با ID" />
+          </div>
+
+          <div class="icon-container">
+            <button>
+              <i class="fa fa-refresh"></i>
+            </button>
+            <button id="plus-btn">
+              <i class="fa fa-plus"></i>
+            </button>
+          </div>
+        </div>
+
+        <span class="error-search-not-found">نتیجه ای یافت نشد</span>
+
+        <div class="table-responsive" dir="ltr">
+          <table class="table">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Order ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <tbody id="list-data-wrapper">
+              <!-- <tr>
+                <td>2017-09-29 01:22</td>
+                <td>24352</td>
+                <td>iPhone X 64Gb grey</td>
+                <td>999</td>
+                <td>1</td>
+                <td>999</td>
+              </tr> -->
+            </tbody>
+          </table>
+        </div>
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            flex-direction: column;
+          "
+        >
+          <button class="add-new-order-btn">تایید</button>
+          <span class="error-add-order"></span>
+        </div>
+      </section>
+      <!-- products-list-panel-END -->
+
+      <!-- card-list-panel-START -->
+      <section id="card-list-panel" class="tab-panel">
+        <h4>نحوه چیدمان کارت ها در صفحه را انتخاب کنید:</h4>
+
+        <div class="select-checkbox-container">
+          <div class="select-checkbox">
+            <input
+              type="radio"
+              class="radio-btn"
+              name="selected"
+              id="sort-by-screen-size"
+            />
+            <span>به صورت خودکار بر اساس اندازه صفحه</span>
+          </div>
+          <div class="select-checkbox">
+            <input
+              type="radio"
+              class="radio-btn"
+              name="selected"
+              id="custome-sort"
+            />
+            <span>انتخاب تعداد کارت ها در هر سطر</span>
+          </div>
+        </div>
+        <div class="selected-second-checbox">
+          <div class="select-checkbox">
+            <input type="radio" name="select-sort-card" id="two-card" />
+            <span>دو کارت</span>
+          </div>
+          <div class="select-checkbox">
+            <input type="radio" name="select-sort-card" id="three-card" />
+            <span>سه کارت</span>
+          </div>
+          <div class="select-checkbox">
+            <input type="radio" name="select-sort-card" id="four-card" />
+            <span>چهار کارت</span>
+          </div>
+        </div>
+
+        <div class="card-container">
+          <div
+            class="row row-cols-1 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 g-3"
+            id="card-list"
+          ></div>
+        </div>
+      </section>
+      <!-- card-list-panel-END -->
+
+      <!-- contact-us-panel-START -->
+      <section id="contact-us-panel" class="tab-panel">
+        <div class="head">
+          <h3>Contact Us</h3>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita
+            totam voluptatem officiis ullam blanditiis perferendis cum voluptas
+            enim omnis, consequuntur id cumque explicabo numquam, ipsum corporis
+            quos, doloribus debitis. Doloremque!
+          </p>
+        </div>
+
+        <div class="contact-cards-container">
+          <div class="contact-card">
+            <form id="my-form" class="field-container">
+              <h4>Send Message</h4>
+
+              <div class="input-container">
+                <div class="input-field m-1">
+                  <label for="first-name"
+                    ><span style="color: red">✷</span>first name</label
+                  >
+                  <input type="text" id="first-name" />
+                  <span id="error-first-name" class="error"
+                    >field required</span
+                  >
+                </div>
+                <div class="input-field m-1">
+                  <label for="last-name">last name</label>
+                  <input type="text" />
+                </div>
+
+                <div class="input-field m-1">
+                  <label for="mobil-number"
+                    ><span style="color: red">✷</span>mobil number</label
+                  >
+                  <input type="tel" id="mobil-number" maxlength="11" />
+                  <span id="error-mobil-number" class="error"
+                    >field required</span
+                  >
+                </div>
+                <div class="input-field m-1">
+                  <label for="email-address">email address</label>
+                  <input type="email" />
+                </div>
+              </div>
+
+              <div class="input-field">
+                <label for="message"
+                  ><span style="color: red">✷</span>write your message</label
+                >
+                <textarea id="message" cols="30" rows="10"></textarea>
+                <span id="error-message" class="error">field required</span>
+              </div>
+              <div class="input-field">
+                <button class="btn btn-dark w-100">Send</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="contact-info">
+            <h5>Contact info</h5>
+            <div class="info-col">
+              <i class="fa fa-location-pin"></i>
+              <span
+                >Lorem ipsum dolor sit amet consectetur adipisicing elit.</span
+              >
+            </div>
+            <div class="info-col">
+              <i class="fa fa-mail-bulk"></i>
+              <span style="word-break: break-all">sajadmhr666@gmail.com</span>
+            </div>
+            <div class="info-col">
+              <i class="fa fa-phone"></i>
+              <span>09304419522</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- contact-us-panel-END -->
+    </div>
+    <!-- panels-END -->
+
+    <!-- loading-START -->
+    <div class="loaded">
+      <h1>Loading . . .</h1>
+    </div>
+     <!-- loading-END -->
+
+  </body>
+</html>
