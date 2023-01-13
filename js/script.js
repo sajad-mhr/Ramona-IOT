@@ -29,7 +29,8 @@ const $ = document;
 const tabBarItem = $.querySelectorAll(".tab-bar-item");
 const tabBarMobileItem = $.querySelectorAll(".tab-bar-mobile-item");
 const tabPanel = $.querySelectorAll(".tab-panel");
-const tabBarMobileItems = $.querySelector(".tab-bar-mobile-items");
+const tabBarMobileItems = $.querySelectorAll(".tab-bar-mobile-items");
+const overleyTabBarMobile = $.querySelector(".overley-tab-bar-mobile");
 const errorNotFound = $.querySelector(".error-search-not-found");
 
 // click tabbar buttons for render panel
@@ -62,10 +63,31 @@ for (let i = 0; i < tabBarMobileItem.length; i++) {
 
 const menuMobileBtn = $.querySelector(".menu-mobile-btn");
 
+let isOpenMenu = false;
 menuMobileBtn.addEventListener("click", () => {
   menuMobileBtn.classList.toggle("rotation");
-  tabBarMobileItems.classList.toggle("mobile-menu-show");
-  tabBarMobileItems.style.height = "200px";
+  if (isOpenMenu) {
+    overleyTabBarMobile.style.height = "0";
+    overleyTabBarMobile.style.boxShadow = "0 0 0 0 rgba(0,0,0,0.4)";
+    isOpenMenu = false;
+  } else {
+    overleyTabBarMobile.style.height = "160px";
+    overleyTabBarMobile.style.boxShadow = "0 5px 7px 1px rgba(0,0,0,0.1)";
+    isOpenMenu = true;
+  }
+});
+
+tabBarMobileItems.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    menuMobileBtn.classList.toggle("rotation");
+    overleyTabBarMobile.style.height = "0";
+    overleyTabBarMobile.style.boxShadow = "0 0 0 0 rgba(0,0,0,0.4)";
+    isOpenMenu = false;
+  });
+});
+
+$.body.addEventListener("click", (e) => {
+  console.log(e.target);
 });
 
 const listDataWrapper = $.getElementById("list-data-wrapper");

@@ -19,8 +19,10 @@
   </head>
   <body>
     <!-- tabbar-mobile-START -->
-    
-   
+    <div class="my-toast">
+      <span>سفارش اضافه شد</span>
+    </div>
+
     <nav class="tab-bar-mobile">
       <div class="mobile-bar-right">
         <a href="./indexRamona.html">
@@ -35,20 +37,22 @@
       </div>
     </nav>
 
-    <div class="tab-bar-mobile-items">
-      <a
-        data-target="products-list-panel"
-        href="#"
-        class="tab-bar-mobile-item active"
-      >
-        لیست محصولات
-      </a>
-      <a data-target="card-list-panel" href="#" class="tab-bar-mobile-item">
-        کارت ها
-      </a>
-      <a data-target="contact-us-panel" href="#" class="tab-bar-mobile-item">
-        ارتباط با ما
-      </a>
+    <div class="overley-tab-bar-mobile">
+      <div class="tab-bar-mobile-items">
+        <a
+          data-target="products-list-panel"
+          href="#"
+          class="tab-bar-mobile-item active"
+        >
+          لیست محصولات
+        </a>
+        <a data-target="card-list-panel" href="#" class="tab-bar-mobile-item">
+          کارت ها
+        </a>
+        <a data-target="contact-us-panel" href="#" class="tab-bar-mobile-item">
+          ارتباط با ما
+        </a>
+      </div>
     </div>
     <!-- tabbar-mobile-END -->
 
@@ -100,13 +104,6 @@
     <!-- panels-START -->
     <div
       id="panels"
-      style="
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      "
     >
       <!-- products-list-panel-START -->
       <section id="products-list-panel" class="tab-panel active">
@@ -300,15 +297,15 @@
     </div>
     <!-- panels-END -->
 
-    <div class="my-toast">
-      <span>سفارش اضافه شد</span>
-    </div>
-
     <!-- loading-START -->
     <div class="loaded">
-      <h1>Loading . . .</h1>
+      <div class="circle-container">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+      </div>
+      <!-- <h1>Loading . . .</h1> -->
     </div>
-     <!-- loading-END -->
-
+    <!-- loading-END -->
   </body>
 </html>

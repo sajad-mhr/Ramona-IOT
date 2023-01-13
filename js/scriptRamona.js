@@ -79,3 +79,11 @@ scrollDownBtn.addEventListener("click", () => {
 });
 
 window.addEventListener("scroll", checkCard);
+
+// loading script
+let loaded = $.querySelector(".loaded");
+window.addEventListener("load", function () {
+  setTimeout(function () {
+    loaded.classList.add("hidden");
+  }, 500);
+});
