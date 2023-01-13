@@ -82,6 +82,7 @@ body {
   box-shadow: 0 1px 10px 3px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 0;
+  z-index: 1;
 }
 
 .mobile-bar-left {
@@ -153,7 +154,7 @@ body {
   .tab-bar-mobile {
     display: flex;
   }
-  #panels{
+  #panels {
     margin-top: 50px !important;
   }
 }
@@ -237,8 +238,19 @@ body {
   display: block;
 }
 
-.overley-tab-bar-mobile{
-  height:0;
+@keyframes showPanel {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.overley-tab-bar-mobile {
+  height: 0;
   width: 100%;
   position: fixed;
   z-index: 1;
@@ -260,10 +272,9 @@ body {
   position: relative;
 }
 
-.tab-bar-mobile-items:hover{
+.tab-bar-mobile-items:hover {
   color: #000;
 }
-
 
 @media screen and (min-width: 769px) {
   .overley-tab-bar-mobile {
@@ -278,7 +289,6 @@ body {
   width: 80%;
   text-align: center;
   font-size: 17px;
-
 }
 
 .tab-bar-mobile-item.active {
@@ -292,7 +302,7 @@ body {
 
 /* panel-product-styles-START */
 
-#panels{
+#panels {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -499,7 +509,7 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-  .circle{
+  .circle {
     width: 20px !important;
     height: 20px !important;
     background-color: #fff;
@@ -606,43 +616,40 @@ body {
   }
 }
 
-.circle-container{
+.circle-container {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   width: 30%;
   height: 100px;
 }
-.circle{
+.circle {
   width: 40px;
   height: 40px;
   background-color: #fff;
   border-radius: 100%;
 }
 
-.circle-1{
-    animation:circleAnim 0.4s alternate infinite;
+.circle-1 {
+  animation: circleAnim 0.4s alternate infinite;
 }
-.circle-2{
-    animation:circleAnim 0.4s alternate infinite;
-    animation-delay: 0.1s;
+.circle-2 {
+  animation: circleAnim 0.4s alternate infinite;
+  animation-delay: 0.1s;
 }
-.circle-3{
-    animation:circleAnim 0.4s alternate infinite;
-    animation-delay: 0.2s;
+.circle-3 {
+  animation: circleAnim 0.4s alternate infinite;
+  animation-delay: 0.2s;
 }
-
-
 
 @keyframes circleAnim {
-  0%{
+  0% {
     margin-bottom: 0px;
   }
-  100%{
+  100% {
     margin-bottom: 100px;
   }
 }
-
 
 .my-toast {
   background-color: green;

@@ -46,6 +46,7 @@ const clickTab = (e) => {
   for (let i = 0; i < tabPanel.length; i++) {
     if (tabPanel[i].id === classString) {
       tabPanel[i].classList.add("active");
+      tabPanel[i].style.animation = "showPanel 0.4s forwards linear"
       tabBarMobileItem[i].classList.add("active");
       tabBarItem[i].classList.add("active");
     } else {
