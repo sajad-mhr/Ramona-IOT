@@ -5,6 +5,10 @@ const menuBtn = $.querySelector(".menu-btn");
 const closeMenuBtn = $.querySelector(".close-menu-btn");
 const navbarItemsMobile = $.querySelector(".navbar-items-mobile");
 const backToTop = $.querySelector(".back-to-top");
+const CardService = $.querySelectorAll(".card-service");
+const feature = $.querySelectorAll(".feature");
+const cardTeam = $.querySelector(".card-team");
+const scrollDownBtn = $.querySelector(".scroll-down-btn");
 
 // Fix navbar after scrolling
 window.addEventListener("scroll", () => {
@@ -40,3 +44,38 @@ closeMenuBtn.addEventListener("click", () => {
   navbarItemsMobile.classList.remove("show-drawer");
   $.body.style.overflowY = "scroll";
 });
+
+const checkCard = () => {
+  const triggerBottom = (window.innerHeight / 5) * 4;
+
+  const cardTeamTop = cardTeam.getBoundingClientRect().top;
+  if (cardTeamTop < triggerBottom) {
+    cardTeam.classList.add("show");
+  } else {
+    cardTeam.classList.remove("show");
+  }
+
+  feature.forEach((f) => {
+    const featureTop = f.getBoundingClientRect().top;
+    if (featureTop < triggerBottom) {
+      f.classList.add("show");
+    } else {
+      f.classList.remove("show");
+    }
+  });
+
+  CardService.forEach((card) => {
+    const cardTop = card.getBoundingClientRect().top;
+    if (cardTop < triggerBottom) {
+      card.classList.add("show");
+    } else {
+      card.classList.remove("show");
+    }
+  });
+};
+
+scrollDownBtn.addEventListener("click", () => {
+  scrollTo(0,window.scrollY + window.innerHeight - 50);
+});
+
+window.addEventListener("scroll", checkCard);

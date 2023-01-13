@@ -70,6 +70,7 @@ menuMobileBtn.addEventListener("click", () => {
 
 const listDataWrapper = $.getElementById("list-data-wrapper");
 const plusBtn = $.getElementById("plus-btn");
+const refreshBtn = $.getElementById("refresh-btn");
 const addNewOrderBtn = $.querySelector(".add-new-order-btn");
 
 // render data from listData Array
@@ -91,6 +92,10 @@ const renderListData = (data, wrapper) => {
 };
 
 renderListData(listData, listDataWrapper);
+
+refreshBtn.addEventListener("click", () => {
+  window.location.reload();
+});
 
 // open field add new order
 const openField = () => {
@@ -136,6 +141,7 @@ const addNewOrder = () => {
   const quantityInput = $.getElementById("quantity-input");
   const totalInput = $.getElementById("total-input");
   const errorAddOrder = $.querySelector(".error-add-order");
+  const myToast = $.querySelector(".my-toast");
 
   const dateInputValue = dateInput.value;
   const orderIDInputValue = Number(orderIDInput.value);
@@ -172,6 +178,10 @@ const addNewOrder = () => {
       total: totalInputValue,
     };
     listData.push(orderObject);
+    myToast.classList.add("show");
+    setTimeout(() => {
+      myToast.classList.remove("show");
+    }, 2000);
     setToLocalStorage(listData);
     createNewOrder(listData);
     addNewOrderBtn.style.display = "none";
@@ -321,7 +331,7 @@ radioBtn.forEach((radio) => {
       selectedSecondCheckboxCon.style.display = "flex";
 
       radioSelectCard.forEach((select) => {
-        if(select.id==="four-card"){
+        if (select.id === "four-card") {
           select.setAttribute("checked", true);
           cardList.className = "row row-cols-1 row-cols-lg-4 g-3";
         }
@@ -341,8 +351,7 @@ radioBtn.forEach((radio) => {
               break;
 
             default:
-              cardList.className =
-                "row row-cols-1 row-cols-lg-2 g-3";
+              cardList.className = "row row-cols-1 row-cols-lg-2 g-3";
               break;
           }
         });
@@ -352,7 +361,7 @@ radioBtn.forEach((radio) => {
       cardList.className =
         "row row-cols-1 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 g-3";
       radioSelectCard.forEach((s) => {
-        s.removeAttribute("checked")
+        s.removeAttribute("checked");
       });
     }
   });

@@ -3,22 +3,28 @@
   src: url("../assets/fonts/Vazir.ttf");
 }
 
+
+html{
+  scroll-behavior: smooth;
+}
+
 * {
   font-family: vazir;
 }
 
 body {
   margin: 0;
+  overflow-x: hidden;
 }
 
 .hero-header {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url("../assets/images/new_york.jpg");
-  height: 80vh;
-  background-position: center;
-  background-repeat: no-repeat;
+  height: 100vh;
   background-size: cover;
-  position: relative;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 /* header styles-START */
@@ -30,7 +36,7 @@ body {
   justify-content: center;
   padding: 20px;
   color: #fff;
-  height: 50vh;
+  height: 100vh;
 }
 .header-content h3 {
   font-size: 30px;
@@ -44,6 +50,8 @@ body {
 /* navbar-styles-START */
 .my-navbar {
   width: 100%;
+  position: fixed;
+  top: -1px;
 }
 .navbar-items {
   padding: 20px;
@@ -76,8 +84,8 @@ body {
   width: 100%;
   flex-direction: column;
   align-items: center;
-  transition: 0.6s ease-in-out;
   transform: translateX(-100%);
+  transition: 0.4s ease;
   overflow-y: scroll;
   z-index: 2;
 }
@@ -110,15 +118,18 @@ body {
 
 .my-navbar-mobile {
   width: 100%;
-  padding: 10px;
+  padding: 5px;
+  position: fixed;
+  top: -1px;
 }
 
 .nav-fixed {
   position: fixed;
   top: -1px;
   background-color: #222222;
-  transition: 0.3s;
-  box-shadow: 0 2px 10px 2px rgba(0, 0, 0, 0.5);
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 2px 10px 2px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
 }
 
 .menu-btn {
@@ -145,6 +156,12 @@ body {
   min-height: 250px;
   margin: 10px;
   border-radius: 5px;
+  transform: translateX(600%);
+  transition: 0.3s ease;
+}
+
+.card-service.show {
+  transform: translateX(0);
 }
 
 .card-service p {
@@ -176,7 +193,13 @@ body {
   align-items: center;
   margin: 20px;
   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
+  transform: translateX(-600%);
+  transition: 0.7s ease;
   border-radius: 10px;
+}
+
+.card-team.show {
+  transform: translateX(0);
 }
 
 .left-card {
@@ -239,9 +262,17 @@ body {
   align-items: center;
   width: 90%;
   margin-top: 20px;
+  transform: translateX(600%);
+  transition: 0.7s ease;
+
 }
 .feature:nth-child(even) {
   flex-direction: row-reverse;
+  transform: translateX(-600%);
+}
+
+.feature.show{
+  transform: translateX(0);
 }
 
 .feature-image {
@@ -331,6 +362,22 @@ body {
   margin-top: 6px;
   color: #222;
   font-size: 30px;
+}
+
+.scroll-down-btn{
+  background-color:transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 0 100px 0 rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-down-btn i{
+  font-size: 30px;
+  margin-top: 3px;
 }
 
 /* back-to-top-styles-END */
