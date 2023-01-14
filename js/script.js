@@ -46,7 +46,7 @@ const clickTab = (e) => {
   for (let i = 0; i < tabPanel.length; i++) {
     if (tabPanel[i].id === classString) {
       tabPanel[i].classList.add("active");
-      tabPanel[i].style.animation = "showPanel 0.4s forwards linear"
+      tabPanel[i].style.animation = "showPanel 0.4s forwards linear";
       tabBarMobileItem[i].classList.add("active");
       tabBarItem[i].classList.add("active");
     } else {
@@ -87,15 +87,11 @@ tabBarMobileItems.forEach((tab) => {
   });
 });
 
-$.body.addEventListener("click", (e) => {
-  console.log(e.target);
-});
-
 const listDataWrapper = $.getElementById("list-data-wrapper");
 const plusBtn = $.getElementById("plus-btn");
 const refreshBtn = $.getElementById("refresh-btn");
 const addNewOrderBtn = $.querySelector(".add-new-order-btn");
-
+const tableResponsive = $.querySelector(".table-responsive");
 // render data from listData Array
 const renderListData = (data, wrapper) => {
   listDataWrapper.innerHTML = "";
@@ -135,6 +131,7 @@ const openField = () => {
   listDataWrapper.insertAdjacentHTML("beforeend", new_tr);
   addNewOrderBtn.style.display = "block";
   plusBtn.setAttribute("disabled", true);
+  tableResponsive.scrollTo(0,tableResponsive.scrollHeight)
 };
 
 // create order items function for update DOM after add order
@@ -166,31 +163,32 @@ const addNewOrder = () => {
   const errorAddOrder = $.querySelector(".error-add-order");
   const myToast = $.querySelector(".my-toast");
 
-  const dateInputValue = dateInput.value;
-  const orderIDInputValue = Number(orderIDInput.value);
-  const orderNameInputValue = orderNameInput.value;
-  const priceInputValue = Number(priceInput.value);
-  const quantityInputValue = Number(quantityInput.value);
-  const totalInputValue = Number(totalInput.value);
+  let dateInputValue = dateInput.value.trim();
+  let orderIDInputValue = Number(orderIDInput.value.trim());
+  let orderNameInputValue = orderNameInput.value.trim();
+  let priceInputValue = Number(priceInput.value.trim());
+  let quantityInputValue = Number(quantityInput.value.trim());
+  let totalInputValue = Number(totalInput.value.trim());
 
   if (
-    !dateInputValue &&
-    !orderIDInputValue &&
-    !orderNameInputValue &&
-    !priceInputValue &&
-    !quantityInputValue &&
-    !totalInputValue
+    dateInputValue == "" ||
+    orderIDInputValue == "" ||
+    orderNameInputValue == "" ||
+    priceInputValue == "" ||
+    quantityInputValue == "" ||
+    totalInputValue == ""
   ) {
     errorAddOrder.style.display = "block";
     errorAddOrder.innerHTML = "تمام فیلد ها الزامی است";
-  } else if (
-    isNaN(orderIDInputValue) ||
-    isNaN(priceInputValue) ||
-    isNaN(quantityInputValue) ||
-    isNaN(totalInputValue)
+  }else if (
+    isNaN(orderIDInput.value.trim()) ||
+    isNaN(priceInput.value.trim()) ||
+    isNaN(quantityInput.value.trim()) ||
+    isNaN(totalInput.value.trim())
   ) {
     errorAddOrder.style.display = "block";
-    errorAddOrder.innerHTML = "فقط اعداد مجاز است";
+    errorAddOrder.innerHTML =
+      "در فیلد های date-Order ID-Price-Quantity-Total فقط اعداد مجاز است ";
   } else {
     let orderObject = {
       id: orderIDInputValue,
